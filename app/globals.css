@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400..800&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #CE0F69;
+  --foreground: #1C1D1D;
+  --text: #877277;
+  --jost: "Jost", sans-serif;
+  --baloo: "Baloo Chettan 2", sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-primary: var(--primary);
+  --color-text: var(--text);
+
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-jost: var(--jost);
+  --font-baloo: var(--baloo);
+
 }
 
 @media (prefers-color-scheme: dark) {
