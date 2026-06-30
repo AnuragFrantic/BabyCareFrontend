@@ -87,7 +87,7 @@ function SectionCard({ title, subtitle, children }) {
 function OrderSummary() {
     return (
         <div className="rounded-2xl border border-gray-100 bg-white p-5">
-            <div className="flex flex-col gap-4 border-b border-gray-100 pb-4">
+            <div className="flex flex-col gap-4 border-b border-[#F2D4D7] pb-4">
                 {cartItems.map((item) => (
                     <div key={item.id} className="flex items-start gap-3">
                         <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-[#fde9ea]">
@@ -105,7 +105,7 @@ function OrderSummary() {
                 ))}
             </div>
 
-            <div className="flex flex-col gap-2 border-b border-gray-100 py-4 text-xs">
+            <div className="flex flex-col gap-2 border-b border-[#F2D4D7] py-4 text-xs">
                 <div className="flex justify-between">
                     <span className="text-foreground font-medium font-jost">Subtotal • {cartItems.length} Items</span>
                     <span className="font-semibold text-primary font-jost">Rs. {orderTotals.subtotal.toFixed(2)}</span>
