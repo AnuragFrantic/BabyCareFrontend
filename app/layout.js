@@ -1,13 +1,22 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Jost,
+  Baloo_Chettan_2,
+  Nunito_Sans,
+} from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const baloo = Baloo_Chettan_2({
+  variable: "--font-baloo",
+  subsets: ["latin"],
+});
+
+
+const nunito = Nunito_Sans({
+  variable: "--font-nunito",
   subsets: ["latin"],
 });
 
@@ -20,9 +29,17 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`
+        ${jost.variable}
+        ${baloo.variable}
+        ${nunito.variable}
+
+        h-full antialiased
+      `}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }

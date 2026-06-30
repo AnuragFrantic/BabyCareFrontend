@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400..800&display=swap');
 
 :root {
   --primary: #CE0F69;
+  --light-primary: #FFF0F0;
   --foreground: #1C1D1D;
   --text: #877277;
   --jost: "Jost", sans-serif;
   --baloo: "Baloo Chettan 2", sans-serif;
+  --nunito: "Nunito Sans", sans-serif;
 }
 
 @theme inline {
   --color-primary: var(--primary);
+  --color-light-primary: var(--light-primary);
   --color-text: var(--text);
-
   --color-foreground: var(--foreground);
   --font-jost: var(--jost);
   --font-baloo: var(--baloo);
+  --font-nunito: var(--nunito);
 
 }
 
@@ -28,8 +29,49 @@
   }
 }
 
+
+
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+@layer components {
+  .section-padding {
+    @apply py-2 md:py-6 lg:py-6;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-gap {
+    @apply mt-8 md:mt-12 lg:mt-16;
+  }
+}
+
+
+
+.swiper-pagination {
+  margin-top: 40px;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+  background: #ead0d8;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 28px;
+  background: var(--primary);
+  border-radius: 999px;
 }

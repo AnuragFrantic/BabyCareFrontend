@@ -1,6 +1,6 @@
 import Image from "next/image";
-import authbg from "@/app/assets/authbg.png";
-import logo from "@/app/assets/logo.png";
+import authbg from "@/assets/authbg.png";
+import logo from "@/assets/logo.png";
 
 export default function AuthForm({ type = "login" }) {
     const isSignup = type === "signup";
