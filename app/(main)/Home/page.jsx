@@ -29,6 +29,7 @@ import ProductCard from "@/components/ProductCard";
 import FilledBtn from "@/components/Filledbtn";
 import ShopNow from "./ShopNow";
 import Testimonial from "@/components/Testimonial";
+import BlogsBox from "@/components/BlogsBox";
 
 
 
@@ -202,10 +203,10 @@ function HomePage() {
                         </div>
                     </div>
                     <div className="grid grid-cols-4 gap-3">
-                        {bestProducts.map((item) => {
+                        {bestProducts?.map((item, index) => {
                             return (
                                 <>
-                                    <ProductCard product={item} />
+                                    <ProductCard product={item} key={index} />
                                 </>
                             )
                         })}
@@ -243,6 +244,8 @@ function HomePage() {
                         })}
                     </div>
                 </Section>
+
+                <BlogsBox />
             </div>
         </>
     );

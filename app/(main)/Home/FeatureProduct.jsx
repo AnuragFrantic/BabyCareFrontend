@@ -125,7 +125,7 @@ function FeatureProduct() {
                         slidesPerView: 4,
                     },
                 }}
-                className="pb-14"
+                className="overflow-visible !py-6 !pb-12"
             >
                 {filteredProducts.map((product) => (
                     <SwiperSlide key={product.id}>

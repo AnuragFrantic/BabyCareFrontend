@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { Heart, ShoppingCart, Eye } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function ProductCard({ product }) {
+    const router = useRouter();
     return (
-        <div className="group rounded-[24px] border border-primary/15 bg-white p-3 transition-all duration-300 hover:shadow-lg">
+        <div onClick={() => router.push(`/product/${product.name}`)} className="group rounded-[24px] border border-primary/15 bg-white p-3 transition-all duration-300 hover:shadow-lg">
             {/* Image */}
             <div className="relative overflow-hidden rounded-[22px] bg-[#FFF0F0]">
                 <Image

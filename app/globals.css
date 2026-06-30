@@ -3,6 +3,7 @@
 
 :root {
   --primary: #CE0F69;
+  --orange: #E35946;
   --light-primary: #FFF0F0;
   --foreground: #1C1D1D;
   --text: #877277;
@@ -13,6 +14,7 @@
 
 @theme inline {
   --color-primary: var(--primary);
+  --color-orange: var(--orange);
   --color-light-primary: var(--light-primary);
   --color-text: var(--text);
   --color-foreground: var(--foreground);

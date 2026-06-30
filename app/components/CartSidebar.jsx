@@ -95,15 +95,15 @@ export default function CartSidebar() {
                         className="fixed right-0 top-0 z-50 h-full w-full max-w-[420px] bg-background flex flex-col shadow-2xl"
                         aria-label="Shopping cart"
                     >
-                        <div className="flex items-center justify-between px-6 py-5 border-b border-border flex-shrink-0">
+                        <div className="flex items-center justify-between bg-white px-6 py-5 border-b border-border flex-shrink-0">
                             <div className="flex items-center gap-2.5">
                                 <ShoppingBag
                                     size={20}
                                     className="text-primary"
                                 />
 
-                                <span className="text-[17px] font-semibold text-foreground">
-                                    Your Cart
+                                <span className="text-2xl font-bold text-foreground font-baloo">
+                                    Cart
                                 </span>
 
                                 {itemCount > 0 && (
@@ -122,7 +122,7 @@ export default function CartSidebar() {
                             </button>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+                        <div className="flex-1 overflow-y-auto px-4 py-4 bg-white space-y-3">
                             {cart.length === 0 ? (
                                 <motion.div
                                     initial={{
@@ -155,7 +155,7 @@ export default function CartSidebar() {
 
                                     <button
                                         onClick={closeSidebar}
-                                        className="mt-2 px-6 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-destructive transition-colors duration-200"
+                                        className="mt-2 px-6 py-2.5 rounded-full bg-primary text-white text-sm font-semibold hover:bg-destructive transition-colors duration-200"
                                     >
                                         Continue Shopping
                                     </button>
