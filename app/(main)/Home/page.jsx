@@ -10,6 +10,13 @@ import banner1 from "../../assets/banner1.png";
 import Section from "@/components/Section";
 import Cat1img from "@/assets/cat1.png"
 import Cat2img from "@/assets/cat2.png"
+import cerified from "@/assets/certified.png"
+import makeinindia from "@/assets/makeinindia.png"
+import bpafree from "@/assets/BPA-FREE.png"
+import premium from "@/assets/PremiumQuality.png"
+
+
+
 
 
 import FeatureProduct from "./FeatureProduct";
@@ -21,6 +28,7 @@ import product1 from "@/assets/product1.png"
 import ProductCard from "@/components/ProductCard";
 import FilledBtn from "@/components/Filledbtn";
 import ShopNow from "./ShopNow";
+import Testimonial from "@/components/Testimonial";
 
 
 
@@ -86,6 +94,41 @@ function HomePage() {
         },
     ];
 
+    const data = [
+        {
+            image: cerified,
+            name: "Globally certified"
+        },
+        {
+            image: makeinindia,
+            name: "Make In India"
+        },
+        {
+            image: bpafree,
+            name: "BPA-FREE"
+        },
+        {
+            image: premium,
+            name: "Premium Quality"
+        },
+    ]
+
+    const formatName = (name) => {
+        const words = name.split(" ");
+        const lines = [];
+
+        for (let i = 0; i < words.length; i++) {
+            if (i > 0 && words[i].length <= 2) {
+                // Join short word with previous line
+                lines[lines.length - 1] += ` ${words[i]}`;
+            } else {
+                lines.push(words[i]);
+            }
+        }
+
+        return lines;
+    };
+
     return (
         <>
             {/* <Swiper
@@ -112,69 +155,95 @@ function HomePage() {
                     </SwiperSlide>
                 ))}
             </Swiper> */}
-            <section>
-                <Image src={banner1} alt="banner" className="w-full" />
-            </section>
-            <Section>
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    {categories.map((item) => (
-                        <div
-                            key={item.title}
-                            className="group relative overflow-hidden"
-                        >
-                            <Image
-                                src={item.image}
-                                alt={item.title}
-                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
+            <div className="bg-[#fff8f8]">
+                <section>
+                    <Image src={banner1} alt="banner" className="w-full" />
+                </section>
+                <Section>
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                        {categories.map((item) => (
+                            <div
+                                key={item.title}
+                                className="group relative overflow-hidden"
+                            >
+                                <Image
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
 
-                            <div className="absolute bottom-6 left-1/2 w-[90%] -translate-x-1/2 bg-white py-8 text-center">
-                                <h2 className="font-baloo text-primary text-2xl md:text-4xl font-bold">
-                                    {item.title}
-                                </h2>
+                                <div className="absolute bottom-6 left-1/2 w-[90%] -translate-x-1/2 bg-white py-8 text-center">
+                                    <h2 className="font-baloo text-primary text-2xl md:text-4xl font-bold">
+                                        {item.title}
+                                    </h2>
 
-                                <button className="mt-4 flex w-full flex-col items-center justify-center text-primary">
-                                    <span className="font-nunito font-semibold">
-                                        Shop Now
-                                    </span>
+                                    <button className="mt-4 flex w-full flex-col items-center justify-center text-primary">
+                                        <span className="font-nunito font-semibold">
+                                            Shop Now
+                                        </span>
 
-                                    <span className="mt-1 h-[2px] w-8 bg-primary transition-all duration-300 group-hover:w-20"></span>
-                                </button>
+                                        <span className="mt-1 h-[2px] w-8 bg-primary transition-all duration-300 group-hover:w-20"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </Section>
+
+                <FeatureProduct />
+
+                <FeatureBanner />
+                <ShopByAge />
+
+                <Section>
+                    <div className="grid grid-cols-12 gap-3">
+                        <div className="col-span-12">
+                            <SectionTitle title={"Best Sellers"} subtitle={"Quality Products"} />
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-4 gap-3">
+                        {bestProducts.map((item) => {
+                            return (
+                                <>
+                                    <ProductCard product={item} />
+                                </>
+                            )
+                        })}
+                        <div className="col-span-4">
+                            <div className="flex justify-center mt-4">
+                                <FilledBtn title={"View All"} />
                             </div>
                         </div>
-                    ))}
-                </div>
-            </Section>
 
-            <FeatureProduct />
-
-            <FeatureBanner />
-            <ShopByAge />
-
-            <Section>
-                <div className="grid grid-cols-12 gap-3">
-                    <div className="col-span-12">
-                        <SectionTitle title={"Best Sellers"} subtitle={"Quality Products"} />
                     </div>
-                </div>
-                <div className="grid grid-cols-4 gap-3">
-                    {bestProducts.map((item) => {
-                        return (
-                            <>
-                                <ProductCard product={item} />
-                            </>
-                        )
-                    })}
-                    <div className="col-span-4">
-                        <div className="flex justify-center mt-4">
-                            <FilledBtn title={"View All"} />
-                        </div>
+                </Section>
+
+                <ShopNow />
+                <Testimonial />
+
+                <Section className="bg-white">
+                    <div className="grid grid-cols-4 gap-10">
+                        {data.map((item, index) => {
+                            return (
+                                <>
+                                    <div className="text-center">
+                                        <div className="flex justify-center">
+                                            <Image src={item.image} className="w-40"></Image>
+                                        </div>
+                                        <h6 className="font-jost font-medium text-2xl text-primary mt-2">
+                                            {formatName(item.name).map((line, index) => (
+                                                <span key={index} className="block">
+                                                    {line}
+                                                </span>
+                                            ))}
+                                        </h6>
+                                    </div>
+                                </>
+                            )
+                        })}
                     </div>
-
-                </div>
-            </Section>
-
-            {/* <ShopNow /> */}
+                </Section>
+            </div>
         </>
     );
 }

@@ -62,16 +62,23 @@ body {
   margin-top: 40px;
 }
 
+
+
+
+/* Default dot */
 .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
+  background: #d1d5db;
+  /* Gray */
   opacity: 1;
-  background: #ead0d8;
   transition: all 0.3s ease;
 }
 
+/* Active dot */
 .swiper-pagination-bullet-active {
-  width: 28px;
   background: var(--primary);
-  border-radius: 999px;
+  /* Your primary color */
+  width: 24px;
+  border-radius: 9999px;
 }
