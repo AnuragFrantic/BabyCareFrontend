@@ -4,6 +4,7 @@ import {
   Nunito_Sans,
 } from "next/font/google";
 import "./globals.css";
+import MainLayout from "./(main)/layout";
 const jost = Jost({
   variable: "--font-jost",
   subsets: ["latin"],
@@ -38,7 +39,9 @@ export default function RootLayout({ children }) {
       `}
     >
       <body className="min-h-full flex flex-col">
+
         {children}
+
       </body>
     </html>
   );

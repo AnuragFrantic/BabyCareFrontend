@@ -17,9 +17,12 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 import logo from "../assets/logo.png";
+import { useCartStore } from "@/store/useCartStore";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
     const [search, setSearch] = useState("");
+    const router = useRouter()
     const [showCategories, setShowCategories] = useState(false);
     const [mounted, setMounted] = useState(false);
     const { transcript, browserSupportsSpeechRecognition } =
@@ -36,6 +39,10 @@ export default function Header() {
             language: "en-US",
         });
     };
+
+    const handleAddToCart = () => {
+        useCartStore.getState().openSidebar();
+    }
 
     return (
         <header className="border-b border-gray-100 bg-white">
@@ -68,47 +75,35 @@ export default function Header() {
                         </button>
 
                         {showCategories && (
-                            <div className="absolute left-0 top-full z-50 mt-3 w-64 rounded-xl border border-gray-100 bg-white p-2 shadow-xl">
+                            <div className="absolute left-0 top-full z-50 mt-1 w-64 rounded-xl border border-gray-100 bg-white p-2 shadow-xl">
                                 <Link
-                                    href="/category/baby-toys"
+                                    href="/categories/baby-toys"
                                     className="block  rounded-lg px-4 py-3 font-nunito text-foreground hover:bg-pink-50 hover:text-primary"
                                 >
-                                    Baby Toys
+                                    Baby Feeding Accessories
                                 </Link>
 
                                 <Link
-                                    href="/category/educational"
+                                    href="/categories/educational"
                                     className="block rounded-lg px-4 py-3 font-nunito text-foreground hover:bg-pink-50 hover:text-primary"
                                 >
-                                    Educational Toys
+                                    Baby Gears
                                 </Link>
 
-                                <Link
-                                    href="/category/girls"
-                                    className="block rounded-lg px-4 py-3 font-nunito text-foreground hover:bg-pink-50 hover:text-primary"
-                                >
-                                    Girls Collection
-                                </Link>
 
-                                <Link
-                                    href="/category/boys"
-                                    className="block rounded-lg px-4 py-3 font-nunito text-foreground hover:bg-pink-50 hover:text-primary"
-                                >
-                                    Boys Collection
-                                </Link>
                             </div>
                         )}
                     </div>
 
                     <Link
-                        href="/shop-by-age"
+                        href="/categories/shop-by-age"
                         className="font-nunito text-[16px] font-semibold text-foreground transition-colors hover:text-primary"
                     >
                         Shop By Age
                     </Link>
 
                     <Link
-                        href="/new-arrivals"
+                        href="/new-arrival"
                         className="font-nunito text-[16px] font-semibold text-foreground transition-colors hover:text-primary"
                     >
                         New Arrivals
@@ -144,15 +139,15 @@ export default function Header() {
                 {/* Icons */}
                 <div className="flex items-center gap-5 text-foreground">
                     <button className="transition-colors hover:text-primary">
-                        <ShoppingCart size={22} />
+                        <ShoppingCart size={22} onClick={() => handleAddToCart()} />
                     </button>
 
                     <button className="transition-colors hover:text-primary">
-                        <Heart size={22} />
+                        <Heart size={22} onClick={() => router.push('/dashboard?tab=wishlist')} />
                     </button>
 
                     <button className="transition-colors hover:text-primary">
-                        <User size={22} />
+                        <User size={22} onClick={() => router.push('/dashboard')} />
                     </button>
                 </div>
             </div>
