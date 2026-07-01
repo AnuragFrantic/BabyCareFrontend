@@ -103,7 +103,7 @@ export default function Header() {
                     </Link>
 
                     <Link
-                        href="/new-arrival"
+                        href="/"
                         className="font-nunito text-[16px] font-semibold text-foreground transition-colors hover:text-primary"
                     >
                         New Arrivals
