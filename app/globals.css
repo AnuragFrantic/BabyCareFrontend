@@ -84,3 +84,8 @@ body {
   width: 24px;
   border-radius: 9999px;
 }
+
+.footersection {
+  background-image: url(./assets/footerbg.png);
+  padding-top: 100px;
+}

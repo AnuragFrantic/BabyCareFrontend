@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import banner1 from "../../assets/banner1.png";
+
 import banner2 from "../../assets/banner2.png";
 import banner3 from "../../assets/banner3.png";
 import banner4 from "../../assets/banner4.png";

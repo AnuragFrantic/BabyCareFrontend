@@ -8,11 +8,15 @@ import {
     useCallback,
 } from "react";
 import { ferryWellAPI } from "@/service/api";
+import Loader from "@/components/Loader";
+import { usePathname } from "next/navigation";
 
 const AppContext = createContext(undefined);
 
 export function AppProvider({ children }) {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    const pathname = usePathname();
 
     const [profile, setProfile] = useState(null);
     const [profileLoading, setProfileLoading] = useState(false);
@@ -24,6 +28,17 @@ export function AppProvider({ children }) {
         }
         return null;
     });
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setLoading(true);
+
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [pathname]);
 
     const [promocode, setpromocode] = useState(() => {
         if (typeof window !== "undefined") {
@@ -121,6 +136,8 @@ export function AppProvider({ children }) {
             });
         });
     }, [token, fetchProfile]);
+
+    if (loading) return <Loader />
 
     return (
         <AppContext.Provider

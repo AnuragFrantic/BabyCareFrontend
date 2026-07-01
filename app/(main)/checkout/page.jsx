@@ -7,6 +7,7 @@ import shoes from "@/assets/product1.png";
 import cap from "@/assets/product1.png";
 import Image from "next/image";
 import FilledBtn from "@/components/Filledbtn";
+import Loader from "@/components/Loader";
 
 // ── Static Data ──────────────────────────────────────────────────────────
 
@@ -137,6 +138,7 @@ export default function CheckoutPage() {
     return (
         <div className="min-h-screen bg-white">
             <div className="mx-auto w-full max-w-[1100px] px-4 py-10 sm:px-6 lg:px-8">
+
                 <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_340px]">
                     {/* ── LEFT ── */}
                     <div className="border-r pe-10 border-[#DEDEDE]">

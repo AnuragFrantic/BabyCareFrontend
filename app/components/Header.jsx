@@ -136,7 +136,7 @@ export default function Header() {
                         )}
 
                         <button className="text-foreground transition-colors hover:text-primary">
-                            <Search size={18} />
+                            <Search size={18} className="text-primary" />
                         </button>
                     </div>
                 </div>

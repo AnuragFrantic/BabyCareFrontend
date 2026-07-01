@@ -40,9 +40,10 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CartSidebar from "../components/CartSidebar";
 import { useCartStore } from "../store/useCartStore";
-import { AppProvider } from "../context/AppContext";
+import { AppProvider, useApp } from "../context/AppContext";
 import RefreshOnBack from "../utils/RefreshOnBack";
 import { ModalProvider } from "../context/ModalContext";
+import Loader from "@/components/Loader";
 
 
 
@@ -50,6 +51,7 @@ export default function MainLayout({
     children,
 }) {
     const pathname = usePathname();
+
 
     const hideLayout =
         pathname === "/sign-in" ||
@@ -85,7 +87,7 @@ export default function MainLayout({
 
     return (
         <AppProvider>
-            {/* <PageLoader /> */}
+
             <RefreshOnBack />
             <ModalProvider>
                 <ToastContainer
@@ -96,6 +98,7 @@ export default function MainLayout({
                     pauseOnHover
                     theme="light"
                 />
+
                 {!hideLayout && <Header />}
 
                 <div className={!hideLayout ? "" : ""}>

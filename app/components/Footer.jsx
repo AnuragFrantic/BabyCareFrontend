@@ -28,9 +28,7 @@ function Footer() {
     ]
     return (
         <>
-
-
-            <div className="bg-[#d7c2aa] pt-4" style={{ backgroundImage: footerbg }}>
+            <div className="  footersection" >
                 <Section className='pb-0'>
                     {/* Link columns */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mb-10">
