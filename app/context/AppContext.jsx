@@ -18,6 +18,7 @@ export function AppProvider({ children }) {
 
     const pathname = usePathname();
 
+
     const [profile, setProfile] = useState(null);
     const [profileLoading, setProfileLoading] = useState(false);
 
@@ -29,7 +30,7 @@ export function AppProvider({ children }) {
         return null;
     });
 
-    const home = location.pathname == "/"
+    const home = pathname == "/"
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
