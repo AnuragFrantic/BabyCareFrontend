@@ -29,13 +29,15 @@ export function AppProvider({ children }) {
         return null;
     });
 
+    const home = location.pathname == "/"
+
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setLoading(true);
 
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 4000);
 
         return () => clearTimeout(timer);
     }, [pathname]);
@@ -137,7 +139,7 @@ export function AppProvider({ children }) {
         });
     }, [token, fetchProfile]);
 
-    if (loading) return <Loader />
+    if (loading && home) return <Loader />
 
     return (
         <AppContext.Provider

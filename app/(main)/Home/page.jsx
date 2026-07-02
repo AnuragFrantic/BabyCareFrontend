@@ -30,6 +30,8 @@ import FilledBtn from "@/components/Filledbtn";
 import ShopNow from "./ShopNow";
 import Testimonial from "@/components/Testimonial";
 import BlogsBox from "@/components/BlogsBox";
+import Loader from "@/components/Loader";
+import { useApp } from "@/context/AppContext";
 
 
 
@@ -84,6 +86,8 @@ const bestProducts = [
 
 function HomePage() {
 
+
+
     const categories = [
         {
             title: "Baby Feeding Accessories",
@@ -130,8 +134,11 @@ function HomePage() {
         return lines;
     };
 
+
+
     return (
         <>
+
             {/* <Swiper
                 modules={[Autoplay, Pagination]}
                 slidesPerView={1}
