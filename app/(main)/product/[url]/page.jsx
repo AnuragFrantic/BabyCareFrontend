@@ -24,6 +24,7 @@ import OutlineBtn from "@/components/OutlineBtn";
 import SectionTitle from "@/components/SectionTitle";
 import ProductCard from "@/components/ProductCard";
 import { useCartStore } from "@/store/useCartStore";
+import { useRouter } from "next/navigation";
 
 export default function ProductPage() {
     const [activeImage, setActiveImage] = useState(0);
@@ -31,6 +32,7 @@ export default function ProductPage() {
     const [activeSize, setActiveSize] = useState(1);
     const [pincode, setPincode] = useState("");
     const [activeTab, setActiveTab] = useState("desc");
+    const router = useRouter();
 
     const images = [productImg, productImg, productImg];
 
@@ -231,7 +233,7 @@ export default function ProductPage() {
 
                                 <div className="mt-5 flex items-center gap-4">
                                     <FilledBtn onClick={() => handleAddCart()} title="Add To Cart" className="w-60" />
-                                    <OutlineBtn title="Buy Now" className="w-60" />
+                                    <OutlineBtn title="Buy Now" onClick={() => router.push('/checkout')} className="w-60" />
 
                                 </div>
                             </div>

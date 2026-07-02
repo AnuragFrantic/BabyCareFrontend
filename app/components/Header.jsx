@@ -10,6 +10,7 @@ import {
     User,
     ChevronDown,
     Mic,
+    MicOff,
 } from "lucide-react";
 
 import SpeechRecognition, {
@@ -25,15 +26,29 @@ export default function Header() {
     const router = useRouter()
     const [showCategories, setShowCategories] = useState(false);
     const [mounted, setMounted] = useState(false);
-    const { transcript, browserSupportsSpeechRecognition } =
-        useSpeechRecognition();
+    const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition,
+    } = useSpeechRecognition();
+
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setMounted(true);
-    }, []);
+        if (!listening && transcript) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setSearch(transcript);
+            resetTranscript();
+        }
+    }, [listening, transcript, resetTranscript]);
+
+
+
+
 
     const startListening = () => {
+        resetTranscript();
+
         SpeechRecognition.startListening({
             continuous: false,
             language: "en-US",
@@ -115,18 +130,21 @@ export default function Header() {
                     <div className="flex h-12 w-[340px] items-center rounded-full border border-primary px-4">
                         <input
                             type="text"
-                            value={transcript || search}
+                            value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Search products..."
                             className="flex-1 bg-transparent font-nunito text-sm text-foreground outline-none placeholder:text-text"
                         />
 
-                        {mounted && browserSupportsSpeechRecognition && (
+                        {browserSupportsSpeechRecognition && (
                             <button
                                 onClick={startListening}
-                                className="mr-3 text-primary transition-transform hover:scale-110"
+                                className={`mr-3 transition-all duration-300 ${listening
+                                    ? "text-red-500 animate-pulse scale-110"
+                                    : "text-primary hover:scale-110"
+                                    }`}
                             >
-                                <Mic size={18} />
+                                {listening ? <MicOff size={18} /> : <Mic size={18} />}
                             </button>
                         )}
 
